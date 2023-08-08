@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Venta</title>
+</head>
+<body>
+    <h1>Confirmar Venta</h1>
+    <h2>Vuelo: {{ vuelo.numero_vuelo }}</h2>
+    <h2>Asiento: {{ asiento }}</h2>
+    <h2>Comprador: {{ comprador.nombre }} {{ comprador.apellido }}</h2>
+    <h2>Documento: {{ comprador.documento }}</h2>
+    <h2>Email: {{ comprador.email }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar Venta</button>
+    </form>
+</body>
+</html>

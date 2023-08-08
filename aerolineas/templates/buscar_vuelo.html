@@ -1,0 +1,37 @@
+<!-- buscar_vuelo.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscar Vuelo</title>
+</head>
+<body>
+    <h1>Buscar Vuelo</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+        <br>
+        <label for="aeropuerto_origen">Aeropuerto Origen:</label>
+        <input type="text" id="aeropuerto_origen" name="aeropuerto_origen" required>
+        <br>
+        <label for="aeropuerto_destino">Aeropuerto Destino:</label>
+        <input type="text" id="aeropuerto_destino" name="aeropuerto_destino" required>
+        <br>
+        <button type="submit">Buscar</button>
+    </form>
+    {% if vuelos %}
+        <h2>Vuelos Disponibles</h2>
+        <ul>
+            {% for vuelo in vuelos %}
+                <li>
+                    Vuelo: {{ vuelo.numero_vuelo }}<br>
+                    Fecha: {{ vuelo.fecha_inicio }}<br>
+                    Hora: {{ vuelo.fecha_fin }}<br>
+                    Avión: {{ vuelo.avion.nombre_avion }}<br>
+                    <a href="{% url 'elegir_asiento' vuelo_id=vuelo.id %}">Elegir Asiento</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

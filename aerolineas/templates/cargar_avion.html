@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cargar Avión</title>
+</head>
+<body>
+    <h1>Cargar Avión</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Cargar Avión</button>
+    </form>
+    <a href="{% url 'vista_aerolinea' %}">Volver a la Vista de Aerolínea</a>
+</body>
+</html>

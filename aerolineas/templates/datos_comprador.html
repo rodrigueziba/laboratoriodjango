@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Datos del Comprador</title>
+</head>
+<body>
+    <h1>Datos del Comprador</h1>
+    <h2>Vuelo: {{ vuelo.numero_vuelo }}</h2>
+    <h2>Asiento: {{ asiento }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Continuar</button>
+    </form>
+</body>
+</html>

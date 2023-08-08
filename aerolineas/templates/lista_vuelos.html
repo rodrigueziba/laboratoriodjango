@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Vuelos</title>
+</head>
+<body>
+    <h1>Vuelos</h1>
+    
+    <table border="1">
+        <tr>
+            <th>Número de Vuelo</th>
+            <th>Avión</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+        {% for vuelo in vuelos %}
+        <tr>
+            <td>{{ vuelo.numero_vuelo }}</td>
+            <td>{{ vuelo.avion }}</td>
+            <td>
+                <form method="post" action="{% url 'editar_vuelo' vuelo.id %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Editar">
+                </form>
+            </td>
+            <td>
+                <form method="post" action="{% url 'eliminar_vuelo' vuelo.id %}">
+                    {% csrf_token %}
+                    <input type="submit" value="Eliminar">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Opciones de Aerolinea</h2>
+    <ul>
+        <li><a href="{% url 'cargar_avion' %}">Cargar Nuevo Avión</a></li>
+        <li><a href="{% url 'lista_vuelos' %}">Lista de Vuelos</a></li>
+        <li><a href="{% url 'crear_vuelo' %}">Crear Nuevo Vuelo</a></li>
+    </ul>
+    
+    <h2>Opciones de Usuario</h2>
+    <a href="{% url 'cambiar_clave' %}">Cambiar Contraseña</a>
+    <a href="{% url 'logout' %}">Cerrar Sesión</a>
+</body>
+</html>

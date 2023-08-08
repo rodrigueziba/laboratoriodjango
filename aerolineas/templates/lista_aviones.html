@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Aviones</title>
+</head>
+<body>
+    <h1>Lista de Aviones</h1>
+    
+    <ul>
+        {% for avion in aviones %}
+            <li>{{ avion.nombre_avion }} - {{ avion.total_asientos }}</li>
+            <a href="{% url 'editar_avion' avion.id %}">Editar</a>
+            <a href="{% url 'eliminar_avion' avion.id %}">Eliminar</a>
+        {% endfor %}
+    </ul>
+
+    <h2>Opciones de Aerolinea</h2>
+    <ul>
+        <li><a href="{% url 'cargar_avion' %}">Cargar Nuevo Avión</a></li>
+        <li><a href="{% url 'lista_vuelos' %}">Lista de Vuelos</a></li>
+        <li><a href="{% url 'crear_vuelo' %}">Crear Nuevo Vuelo</a></li>
+    </ul>
+    
+    <h2>Opciones de Usuario</h2>
+    
+    <a href="{% url 'cambiar_clave' %}">Cambiar Contraseña</a>
+    <a href="{% url 'logout' %}">Cerrar Sesión</a>
+</body>
+</html>

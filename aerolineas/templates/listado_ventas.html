@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listado de Ventas</title>
+</head>
+<body>
+    <h1>Listado de Ventas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Número de Vuelo</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Asiento</th>
+                <th>Comprador</th>
+                <th>Documento</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for venta in ventas %}
+                <tr>
+                    <td>{{ venta.vuelo.numero_vuelo }}</td>
+                    <td>{{ venta.vuelo.fecha_inicio  }}</td>
+                    <td>{{ venta.vuelo.fecha_fin }}</td>
+                    <td>{{ venta.asiento }}</td>
+                    <td>{{ venta.comprador.nombre }} {{ venta.comprador.apellido }}</td>
+                    <td>{{ venta.comprador.documento }}</td>
+                    <td>{{ venta.comprador.email }}</td>
+                    <td>
+                        <a href="{% url 'cancelar_venta' venta.id %}">Cancelar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

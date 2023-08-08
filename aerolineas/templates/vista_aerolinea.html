@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vista Aerolínea</title>
+</head>
+<body>
+    <h1>Bienvenido, {{ user.get_full_name }} ({{ user.username }})</h1>
+    
+    {% if user.perfil == 'aerolinea' %}
+        <h2>Opciones de Aerolínea</h2>
+
+
+        <h2>Vuelos</h2>
+        <ul>
+            <li><a href="{% url 'lista_vuelos' %}">Lista de Vuelos</a></li>
+            <li><a href="{% url 'crear_vuelo' %}">Crear Nuevo Vuelo</a></li>
+        </ul>
+        <h2>Aviones</h2>
+        <ul>
+            <li><a href="{% url 'lista_aviones' %}">Lista de Aviones</a></li>
+            <li><a href="{% url 'cargar_avion' %}">Cargar Nuevo Avión</a></li>
+        </ul>
+    {% endif %}
+
+    
+
+    
+    <h2>Opciones de Usuario</h2>
+    
+    <a href="{% url 'cambiar_clave' %}">Cambiar Contraseña</a>
+    <a href="{% url 'logout' %}">Cerrar Sesión</a>
+</body>
+</html>

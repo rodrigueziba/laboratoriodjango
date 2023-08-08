@@ -1,0 +1,35 @@
+<!-- vista_punto_de_venta.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Punto de Venta</title>
+</head>
+<body>
+    <h1>Bienvenido al Punto de Venta</h1>
+    <p>¡Hola, {{ user.username }}!</p>
+    <p>En esta sección podrás vender tickets de vuelos.</p>
+
+    <h2>Buscar Vuelo</h2>
+    <form method="post" action="{% url 'buscar_vuelo' %}">
+        {% csrf_token %}
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+        <br>
+        <label for="aeropuerto_origen">Aeropuerto Origen:</label>
+        <input type="text" id="aeropuerto_origen" name="aeropuerto_origen" required>
+        <br>
+        <label for="aeropuerto_destino">Aeropuerto Destino:</label>
+        <input type="text" id="aeropuerto_destino" name="aeropuerto_destino" required>
+        <br>
+        <button type="submit">Buscar</button>
+    </form>
+    <h2>Mis Ventas</h2>
+    <a href="{% url 'listado_ventas' %}">Ver listado de mis ventas</a>
+
+    <h2>Opciones de Usuario</h2>
+    
+    <a href="{% url 'cambiar_clave' %}">Cambiar Contraseña</a>
+    <a href="{% url 'logout' %}">Cerrar Sesión</a>
+
+</body>
+</html>

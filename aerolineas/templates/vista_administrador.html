@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vista Administrador</title>
+</head>
+<body>
+    <h1>Bienvenido, {{ user.get_full_name }} ({{ user.username }})</h1>
+    
+    {% if user.perfil == 'administrador' %}
+        <h2>Opciones de Aerolínea</h2>
+        <ul>
+            <li><a href="{% url 'lista_vuelos' %}">Lista de Vuelos</a></li>
+            <li><a href="{% url 'crear_vuelo' %}">Crear Nuevo Vuelo</a></li>
+        </ul>
+    {% endif %}
+    
+    <h2>Opciones de Administrador</h2>
+    <ul>
+        <li><a href="{% url 'listar_usuarios' %}">Lista de Usuarios</a></li>
+        <li><a href="{% url 'crear_usuario' %}">Crear Nuevo Usuario</a></li>
+    </ul>
+    
+    <h2>Opciones de Venta</h2>
+    <ul>
+        <!-- Otras opciones de venta -->
+    </ul>
+    
+    <a href="{% url 'cambiar_clave' %}">Cambiar Contraseña</a>
+    <a href="{% url 'logout' %}">Cerrar Sesión</a>
+</body>
+</html>

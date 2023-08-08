@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+    <h1>Usuarios</h1>
+    <table border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>CUIL</th>
+            <th>Perfil</th>
+            <th>Opciones</th>
+        </tr>
+        {% for user in usuarios %}
+        <tr>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.cuit }}</td>
+            <td>{{ user.get_perfil_display }}</td>
+            <td>
+                <a href="{% url 'editar_usuario' user.id %}">Editar</a> -
+                <a href="{% url 'eliminar_usuario' user.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'crear_usuario' %}">Crear Usuario</a>
+    
+    <h2>Opciones de Usuario</h2>
+    <a href="{% url 'cambiar_clave' %}">Cambiar Contraseña</a>
+    <a href="{% url 'logout' %}">Cerrar Sesión</a>
+</body>
+</html>
