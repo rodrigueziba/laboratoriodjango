@@ -67,7 +67,7 @@ def sign_in_view(request):
             cuit=cuit,
             perfil=perfil
         )
-        user.password_changed = False  # Establece la bandera en False para indicar que la contraseña no ha sido cambiada
+        user.password_changed = False  
         user.save()
         messages.success(request, '¡Registro exitoso! Ahora puedes iniciar sesión.')
         return redirect('login')
@@ -207,7 +207,7 @@ def cambiar_clave(request):
     if request.method == 'POST':
         nueva_clave = request.POST['nueva_clave']
         request.user.set_password(nueva_clave)
-        request.user.password_changed = True  # Establecer la bandera en True para indicar que la contraseña ha sido cambiada
+        request.user.password_changed = True  
         request.user.save()
         messages.success(request, '¡La contraseña ha sido cambiada exitosamente!')
         perfil = request.user.perfil
@@ -294,10 +294,9 @@ def vista_punto_de_venta(request):
 
 
 def bloquear_asiento(request, vuelo_id, asiento):
-    # Función que bloquea el asiento durante 60 segundos
-    # Debería realizarse el bloqueo real del asiento aquí
-    time.sleep(60)  # Simulamos bloquear el asiento por 60 segundos
-    # Liberar el asiento
+ 
+    time.sleep(60) 
+  
     return JsonResponse({'status': 'error', 'message': 'El asiento se ha liberado automáticamente porque ha pasado más de 60 segundos.'})
 
 
@@ -393,11 +392,9 @@ def confirmar_venta(request, vuelo_id, asiento, comprador_id):
 
 
 def bloquear_asiento(vuelo_id, asiento):
-    # Simulación de bloqueo de asiento por 60 segundos
+    
     time.sleep(60)
-    # Liberar el asiento (esto puede ser la implementación real de liberación)
-    # ...
-
+    
 @login_required
 def elegir_asiento(request, vuelo_id):
     vuelo = Vuelo.objects.get(pk=vuelo_id)
